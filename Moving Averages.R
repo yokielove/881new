@@ -52,7 +52,7 @@ ma3kkk <- function(v,k){
   if(k>length(v)){
     stop("k > length of x")
   }else if(k==1){
-    z=mean(v)
+    z=v
   }else{
     n <- length(v)-(k-1)
     z <- matrix(c(rep(0,n)),nrow = 1)
