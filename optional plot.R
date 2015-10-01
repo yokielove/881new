@@ -1,23 +1,26 @@
 fun <- function(x,z){
-  if(x>=4 | x<=-4){
-    stop("Invalid input")
+  n = length(x)
+  y <- rep(0,n)
+  for (i in 1:n){
+    if(x[i]>=4 | x[i]<=-4){
+      y[i]=NA
     }
-  if (x<0){
-    y <- x^2+2*x+3
+    if (x[i]<0 & x[i]>-4){
+      y[i] <- x[i]^2+2*x[i]+3
     }
-  if (x>=0 & x<2){
-    y <-x+3
+    if (x[i]>=0 & x[i]<2){
+      y[i] <-x[i]+3
     }
-  if(x>=2){
-    y<-x^2+4*x-7
+    if(x[i]>=2 & x[i]<4){
+      y[i] <-x[i]^2+4*x[i]-7
     }
-  print(c(x,y))
+  }
+  print(y)
   if (z==TRUE){
     plot(x,y)
   }
 }
 
-fun(-2,TRUE)
-fun(1,FALSE)
-fun(3,TRUE)
-fun(5,FALSE)
+#Check:
+a= c(-2,1,3,5)
+fun(a,FALSE)
