@@ -1,0 +1,82 @@
+#This assignment I would love to find the relation among Poisson, Exponential and Gamma Distribution
+
+#Definition of three distributions:
+#Poisson distribution is often referred to as the "distribution of rare events". It is also the distribution for count data.
+#Exponential distribution is the probability distribution that describes the time between events in a Poisson process.
+#Gamma Distribution Gamma distribution arises naturally in processes for which the waiting times between events are relevant.
+
+
+library(ggplot2)
+library(qualityTools)
+library(MASS)
+#set lambda = 5
+
+#Histogram with curve of exponential distribution at lambda=5
+
+x.gen <- rexp(1000, rate = 5)
+hist(x.gen, prob = TRUE)
+x.est <- fitdistr(x.gen, "exponential")$estimate
+x.est
+curve(dexp(x, rate = x.est), add = TRUE, col = "red", lwd = 2)
+
+#Histogram with curve of poisson distribution at lambda=5
+y.gen <- rpois(1000,5)
+hist(y.gen, prob = TRUE)
+y.est <- fitdistr(y.gen, "poisson")$estimate
+
+#??Remaining problem:This command gives me appropriate result, but how to set from and to is a problem
+#??How to set the boundaries and how to make it work as the exponential curve shown above?
+curve(dpois(x,y.est), add = TRUE, col = "red", from=0,to= 12,n=13)
+
+#??Remaining question: For poisson and exponential distribution with lambda =5
+#??What is the respective value of k and theta in gamma distribution?
+
+
+
+#Rewrite the code:
+
+# parameter:
+#   typ: the type of distribution, c("exp", "poi", "gam")
+#   lam: the common parameter in exp. poi. and gamma distribution.
+#   rep: length of samples.
+#   exp.max: threshold of sum of exponential random samples, when getting expo. samples.
+#   poi.max: length of given time interval in a poisson process.
+#   gam.alpha: the first parameter of gamma distribution, number of exponential variables.
+# return:
+#   a sample vector
+set.seed(50)
+rsample <- function(typ, lam, rep, exp.max, poi.max, gam.alpha) {
+if(typ=="exp"){ # exp: rep, lam, exp.max
+  if(exp.max<=0){ 
+    rt <- rexp(rep,lam)
+  } else {
+    rt <- rexp(exp.max, lam)
+  }
+} else if(typ=="poi"){ # poi: rep, lam, poi.max
+  rt <- NULL
+  for(i in 1:rep){
+    tmp <- rpois(poi.max, lam)
+    len <- length(tmp)
+    rt <- c(rt, len)
+  }
+} else if(typ=="gam"){ # gam: rep, lam, gam.alpha
+  rt <- NULL
+  for(i in 1:rep){
+    rt <- c(rt, sum(rexp(gam.alpha, lam)))
+  }
+
+}
+  return(rt)
+}
+
+
+
+
+
+
+rsample("exp", rep=5, lam=2, exp.max=10)
+rsample("poi", rep=5, lam=2, poi.max=3)
+rsample("gam", rep=5, lam=2, gam.alpha=1.3)
+
+
+  
