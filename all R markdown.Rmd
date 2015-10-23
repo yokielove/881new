@@ -1,0 +1,142 @@
+---
+title: "CDO"
+author: "Yulan"
+date: "October 23, 2015"
+output: pdf_document
+---
+
+A collateralized debt obligation (CDO) is a type of structured asset-backed security (ABS).
+
+CDO can be thought of as a promise to pay investors in a prescribed sequence. The CDO is "sliced" into "tranches", which "catch" the cash flow of interest and principal payments in sequence. If some loans default and the cash collected by the CDO is insufficient to pay all of its investors, those in the lowest, most "junior" tranches suffer losses first. The last to lose payment from default are the safest, most senior tranches. Consequently, coupon payments (and interest rates) vary by tranche with the safest/most senior tranches paying the lowest rates and the lowest tranches paying the highest rates to compensate for higher default risk. As an example, a CDO might issue the following tranches in order of safeness: Senior AAA (sometimes known as "super senior"); Junior AAA; AA; A; BBB; Residual.
+
+![pic](cdo.png)
+
+In the early 2000s, CDOs were generally diversified, but by 2006-2007 when the CDO market grew to hundreds of billions of dollars??€¡±this changed. CDO collateral became dominated not by loans, but by lower level (BBB or A) tranches recycled from other asset-backed securities, whose assets were usually non-prime mortgages. These CDOs have been called "the engine that powered the mortgage supply chain" for nonprime mortgages, and are credited with giving lenders greater incentive to make non-prime loans leading up to the 2007-9 subprime mortgage crisis.
+
+![pic](crash.png)
+
+\vspace{.2 in}
+
+
+# Equations
+Valuing CDOs with FFT(a quasi-analytic method)
+
+In the valuation of a CDO, the key is to calculate the loss distribution of the reference pool. Let L(T) be the total loss, up to time T , of the entities in a reference credit pool. To calculate the distribution of L(T) we only need to determine its characteristic function:
+
+\vspace{.2 in} $f(x)=\varepsilon exp(-tL(T))$
+
+\vspace{.2 in} For this a natural choice is the FFT (fast Fourier transform). When the characteristic function has been determined, the reverse FFT can be used to back out the loss distribution.
+
+The determining factors of the above characteristic function are the default probabilities of the reference credits and their default correlations. The default probabilities can be obtained from other sources, such as credit default swap spreads and bond yields. Hence the key to the valuation of a CDO is the modeling of default correlation of the reference credits. The current market standard model on default correlation is the Gaussian (normal) copula model. Under this model the credit index (roughly, the asset return) of a firm has the following form
+
+\vspace{.2 in} $X_{i}=a_{i}\xi +\sqrt{1-a_{i}^{2}}Z_{_{i}}$ \vspace{.2 in}
+
+where $\xi$ and $Z_{i}$'s are independent Gaussian random variables with mean 0 and standard deviation 1, (N(0, 1)) and $a_{i}$ called the factor loading of entity i , is a constant between -1 and 1. A higher value of $X_{i}$ represents a higher credit quality of the entity. Given a default probability pi of the entity one can then find a threshold value of $a_{i}$ of$X_{i}$ such tha:
+
+\vspace{.2 in} $Prob(X<a_{i})=p_{i}$ \vspace{.2 in}
+
+Since Xi is an N(0,1) variable,$a_{i}=\Phi ^{-1}(p_{i})$,where $\Phi$ is the cumulative distribution function of an N(0,1) variable. With the Gaussian copula model we can determine the credit correlation easily by simply using the joint probability
+
+$Prob(X_{i}<a_{i},X_{j}<a_{j})=\Phi {2}(p{i,j},a_{i},a_{j})$
+
+where $P_{i,j}=a_{i}a_{j}$ is the correlation of $x_{i}$ and $x_{j}$ and $\Phi _{2}$ is the cumulative standard bivariate normal distribution function.
+
+A special case of the Gaussian copula model is the one for which all factor loadings are equal. For this case each pair of the reference entities has the same correlation, $\rho$, and the factor loading is the square root of the correlation:
+
+$a_{i}=\sqrt{}\rho$
+
+
+# Risk
+
+Risk for CDO
+
+Participants in the structured credit market are subject to a number of risks, including exposure to market moves, counterparty risk, model risk, valuation and liquidity issues, legal risk and operational risk.
+
+The chart below provides a synopsis of the key risks in exposure to market moves faced by different structured credit products:
+
+Instruments			
+Risks	CDS	Cash CDO	Synth CDO	CDO-Squared
+Credit Spreads	Y	Y	Y	Y
+Recovery Rates	Y	Y	Y	Y
+Correlation		Y	Y	Y
+Overlap (within a single deal)				Y
+Serial Dependence				Y
+Warehousing		Y		
+(i) Credit spreads
+
+A position????s sensitivity to credit spreads depends on its seniority in the structure (degree of leverage). Equity tranches or first loss pieces, for example, can be highly sensitive to credit spread moves.
+
+(ii) Recovery rates
+
+There are potentially low or zero recoveries on junior tranches, especially if risk is systemic and tranches are thin. The downside to single-name risk is the recovery rate, and the downside on a tranche is zero. Depending on tranche width, CDO-squared starts to look like being short a digital option.
+
+(iii) Correlation
+
+The value of a tranche within a structure is determined in part by assumptions regarding correlation. The relationship of the tranche value to the correlation assumptions is not always intuitive.
+
+(iv) Overlap
+
+Risk is increased to the extent that a limited investment universe for reference pools leads to high overlap across pools. CDO-squared often have the same names in multiple portfolios. These issues may be exacerbated by the fact that structured credit remains largely long only, which means that investors have similar risk exposure.
+
+(v) Serial dependence
+
+For CDO-squared, risk is serial dependent (i.e., the exact sequence of credit events matters).
+
+(vi) Warehouse risk
+
+The ramp-up period for new cash deals can be over six months, leaving dealers and asset managers exposed to market moves during this period if the deal cannot close. This is less of a risk for synthetics, which can ramp up quickly.
+
+Risk for CDO
+
+
+
+Participants in the structured credit market are subject to a number of risks, including exposure to market moves, counterparty risk, model risk, valuation and liquidity issues, legal risk and operational risk.
+
+The chart below provides a synopsis of the key risks in exposure to market moves faced by different structured credit products:
+
+|                                | Instruments |          |           |             |
+|:------------------------------:|:-----------:|:--------:|:---------:|:-----------:|
+|              Risks             |     CDS     | Cash CDO | Synth CDO | CDO-Squared |
+|         Credit Spreads         |      Y      |     Y    |     Y     |      Y      |
+|         Recovery Rates         |      Y      |     Y    |     Y     |      Y      |
+|           Correlation          |             |     Y    |     Y     |      Y      |
+| Overlap (within a single deal) |             |          |           |      Y      |
+|        Serial Dependence       |             |          |           |      Y      |
+|           Warehousing          |             |     Y    |           |             |
+
+(i) Credit spreads
+
+A position??????s sensitivity to credit spreads depends on its seniority in the structure (degree of leverage). Equity tranches or first loss pieces, for example, can be highly sensitive to credit spread moves.
+
+(ii) Recovery rates
+
+There are potentially low or zero recoveries on junior tranches, especially if risk is systemic and tranches are thin. The downside to single-name risk is the recovery rate, and the downside on a tranche is zero. Depending on tranche width, CDO-squared starts to look like being short a digital option.
+
+(iii) Correlation
+
+The value of a tranche within a structure is determined in part by assumptions regarding correlation. The relationship of the tranche value to the correlation assumptions is not always intuitive.
+
+(iv) Overlap
+
+Risk is increased to the extent that a limited investment universe for reference pools leads to high overlap across pools. CDO-squared often have the same names in multiple portfolios. These issues may be exacerbated by the fact that structured credit remains largely long only, which means that investors have similar risk exposure.
+
+(v) Serial dependence
+
+For CDO-squared, risk is serial dependent (i.e., the exact sequence of credit events matters).
+
+(vi) Warehouse risk
+
+The ramp-up period for new cash deals can be over six months, leaving dealers and asset managers exposed to market moves during this period if the deal cannot close. This is less of a risk for synthetics, which can ramp up quickly. 
+
+# Plot
+
+```{r echo=FALSE}
+library(ggplot2)
+library(ggthemes)
+CDO.data <- read.csv("CDO data.csv", stringsAsFactors=FALSE,header = T)
+attach(CDO.data)
+outstanding <-rbind(Arbitrage,Balance.Sheet,Unknown)
+ggplot(data=CDO.data, aes(x=Year,y=Arbitrage))+ geom_line()+ theme_wsj(color="blue")+
+  ggtitle("OUTSTANDING")+ theme_economist()
+
+```
