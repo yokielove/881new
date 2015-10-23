@@ -11,12 +11,11 @@ CDO can be thought of as a promise to pay investors in a prescribed sequence. Th
 
 ![pic](cdo.png)
 
-In the early 2000s, CDOs were generally diversified, but by 2006-2007 when the CDO market grew to hundreds of billions of dollars??€¡±this changed. CDO collateral became dominated not by loans, but by lower level (BBB or A) tranches recycled from other asset-backed securities, whose assets were usually non-prime mortgages. These CDOs have been called "the engine that powered the mortgage supply chain" for nonprime mortgages, and are credited with giving lenders greater incentive to make non-prime loans leading up to the 2007-9 subprime mortgage crisis.
+In the early 2000s, CDOs were generally diversified, but by 2006-2007 when the CDO market grew to hundreds of billions of dollars?????this changed. CDO collateral became dominated not by loans, but by lower level (BBB or A) tranches recycled from other asset-backed securities, whose assets were usually non-prime mortgages. These CDOs have been called "the engine that powered the mortgage supply chain" for nonprime mortgages, and are credited with giving lenders greater incentive to make non-prime loans leading up to the 2007-9 subprime mortgage crisis.
 
 ![pic](crash.png)
 
 \vspace{.2 in}
-
 
 # Equations
 Valuing CDOs with FFT(a quasi-analytic method)
@@ -45,50 +44,9 @@ A special case of the Gaussian copula model is the one for which all factor load
 
 $a_{i}=\sqrt{}\rho$
 
-
 # Risk
 
 Risk for CDO
-
-Participants in the structured credit market are subject to a number of risks, including exposure to market moves, counterparty risk, model risk, valuation and liquidity issues, legal risk and operational risk.
-
-The chart below provides a synopsis of the key risks in exposure to market moves faced by different structured credit products:
-
-Instruments			
-Risks	CDS	Cash CDO	Synth CDO	CDO-Squared
-Credit Spreads	Y	Y	Y	Y
-Recovery Rates	Y	Y	Y	Y
-Correlation		Y	Y	Y
-Overlap (within a single deal)				Y
-Serial Dependence				Y
-Warehousing		Y		
-(i) Credit spreads
-
-A position????s sensitivity to credit spreads depends on its seniority in the structure (degree of leverage). Equity tranches or first loss pieces, for example, can be highly sensitive to credit spread moves.
-
-(ii) Recovery rates
-
-There are potentially low or zero recoveries on junior tranches, especially if risk is systemic and tranches are thin. The downside to single-name risk is the recovery rate, and the downside on a tranche is zero. Depending on tranche width, CDO-squared starts to look like being short a digital option.
-
-(iii) Correlation
-
-The value of a tranche within a structure is determined in part by assumptions regarding correlation. The relationship of the tranche value to the correlation assumptions is not always intuitive.
-
-(iv) Overlap
-
-Risk is increased to the extent that a limited investment universe for reference pools leads to high overlap across pools. CDO-squared often have the same names in multiple portfolios. These issues may be exacerbated by the fact that structured credit remains largely long only, which means that investors have similar risk exposure.
-
-(v) Serial dependence
-
-For CDO-squared, risk is serial dependent (i.e., the exact sequence of credit events matters).
-
-(vi) Warehouse risk
-
-The ramp-up period for new cash deals can be over six months, leaving dealers and asset managers exposed to market moves during this period if the deal cannot close. This is less of a risk for synthetics, which can ramp up quickly.
-
-Risk for CDO
-
-
 
 Participants in the structured credit market are subject to a number of risks, including exposure to market moves, counterparty risk, model risk, valuation and liquidity issues, legal risk and operational risk.
 
@@ -106,7 +64,7 @@ The chart below provides a synopsis of the key risks in exposure to market moves
 
 (i) Credit spreads
 
-A position??????s sensitivity to credit spreads depends on its seniority in the structure (degree of leverage). Equity tranches or first loss pieces, for example, can be highly sensitive to credit spread moves.
+A position's sensitivity to credit spreads depends on its seniority in the structure (degree of leverage). Equity tranches or first loss pieces, for example, can be highly sensitive to credit spread moves.
 
 (ii) Recovery rates
 
