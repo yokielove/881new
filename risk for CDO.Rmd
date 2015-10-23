@@ -1,0 +1,48 @@
+---
+title: "CDO"
+author: "LIU JING"
+date: "2015/10/23"
+output: pdf_document
+---
+
+Risk for CDO
+
+
+
+Participants in the structured credit market are subject to a number of risks, including exposure to market moves, counterparty risk, model risk, valuation and liquidity issues, legal risk and operational risk.
+
+The chart below provides a synopsis of the key risks in exposure to market moves faced by different structured credit products:
+
+|                                | Instruments |          |           |             |
+|:------------------------------:|:-----------:|:--------:|:---------:|:-----------:|
+|              Risks             |     CDS     | Cash CDO | Synth CDO | CDO-Squared |
+|         Credit Spreads         |      Y      |     Y    |     Y     |      Y      |
+|         Recovery Rates         |      Y      |     Y    |     Y     |      Y      |
+|           Correlation          |             |     Y    |     Y     |      Y      |
+| Overlap (within a single deal) |             |          |           |      Y      |
+|        Serial Dependence       |             |          |           |      Y      |
+|           Warehousing          |             |     Y    |           |             |
+
+(i) Credit spreads
+
+A position¡¯s sensitivity to credit spreads depends on its seniority in the structure (degree of leverage). Equity tranches or first loss pieces, for example, can be highly sensitive to credit spread moves.
+
+(ii) Recovery rates
+
+There are potentially low or zero recoveries on junior tranches, especially if risk is systemic and tranches are thin. The downside to single-name risk is the recovery rate, and the downside on a tranche is zero. Depending on tranche width, CDO-squared starts to look like being short a digital option.
+
+(iii) Correlation
+
+The value of a tranche within a structure is determined in part by assumptions regarding correlation. The relationship of the tranche value to the correlation assumptions is not always intuitive.
+
+(iv) Overlap
+
+Risk is increased to the extent that a limited investment universe for reference pools leads to high overlap across pools. CDO-squared often have the same names in multiple portfolios. These issues may be exacerbated by the fact that structured credit remains largely long only, which means that investors have similar risk exposure.
+
+(v) Serial dependence
+
+For CDO-squared, risk is serial dependent (i.e., the exact sequence of credit events matters).
+
+(vi) Warehouse risk
+
+The ramp-up period for new cash deals can be over six months, leaving dealers and asset managers exposed to market moves during this period if the deal cannot close. This is less of a risk for synthetics, which can ramp up quickly. 
