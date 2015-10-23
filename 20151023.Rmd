@@ -1,0 +1,55 @@
+---
+title: "MA 881 Assignment 7"
+author: "Hanxi Zhang"
+date: "October 23, 2015"
+output: pdf_document
+---
+#OVERVIEW
+
+Synthetic collateralized debt obligations (CDOs) are credit derivatives that are "synthesized" through credit derivatives, such as credit default swaps (CDSs).
+
+A common structure of CDOs involves slicing the credit risk of the reference pool into a few different risk levels. The level with a higher credit risk supports the levels with lower credit risks.
+
+The most commonly used credit derivatives in synthetic CDOs are credit default swaps (CDSs on CDO tranches) and tranche-linked notes (CDO notes). They can be viewed as extensions of the corresponding single entity credit default swaps and credit-linked notes. 
+
+
+Due to imperfect modeling of correlation, the implied base correlation of a CDO is not a constant, in stead, it varies with tranches. Typically, a base correlation curve is skewed. An example of a base correlation curve is given in the figure below. 
+\vspace{.2 in}
+
+![how to refer](F:\MSSP\2015FALL\MA 881\Assignment7/1.png) 
+
+\vspace{.2 in}
+
+#Equations
+
+Valuing CDOs with FFT(a quasi-analytic method)
+
+In the valuation of a CDO, the key is to calculate the loss distribution of the reference pool. Let L(T) be the total loss, up to time T , of the entities in a reference credit pool. To calculate the distribution of L(T) we only need to determine its characteristic function:
+
+\vspace{.2 in}
+$f(x)=\varepsilon exp(-tL(T))$
+
+\vspace{.2 in}
+For this a natural choice is the FFT (fast Fourier transform). When the characteristic function has been determined, the reverse FFT can be used to back out the loss distribution.
+
+The determining factors of the above characteristic function are the default probabilities of the reference credits and their default correlations. The default probabilities can be obtained from other sources, such as credit default swap spreads and bond yields. Hence the key to the valuation of a CDO is the modeling of default correlation of the reference credits. The current market standard model on default correlation is the Gaussian (normal) copula model. Under this model the credit index (roughly, the asset return) of a firm has the following form
+
+\vspace{.2 in}
+$X_{i}=a_{i}\xi +\sqrt{1-a_{i}^{2}}Z_{_{i}}$
+\vspace{.2 in}
+
+where $\xi$ and $Z_{i}$'s are independent Gaussian random variables with mean 0 and standard deviation 1, (N(0, 1)) and $a_{i}$ called the factor loading of entity i , is a constant between -1 and 1. A higher value of $X_{i}$ represents a higher credit quality of the entity. Given a default probability pi of the entity one can then find a threshold value of $a_{i}$ of$X_{i}$ such tha:
+
+\vspace{.2 in}
+$Prob(X<a_{i})=p_{i}$
+\vspace{.2 in}
+
+Since Xi is an N(0,1) variable,$a_{i}=\Phi ^{-1}(p_{i})$,where $\Phi$ is the cumulative distribution function of an N(0,1) variable. With the Gaussian copula model we can determine the credit correlation easily by simply using the joint probability
+
+$Prob(X_{i}<a_{i},X_{j}<a_{j})=\Phi _{2}(p_{i,j},a_{i},a_{j})$
+
+where $P_{i,j}=a_{i}a_{j}$ is the correlation of $x_{i}$ and $x_{j}$ and $\Phi _{2}$ is the cumulative standard bivariate normal distribution function.
+
+A special case of the Gaussian copula model is the one for which all factor loadings are equal. For this case each pair of the reference entities has the same correlation, $\rho$, and the factor loading is the square root of the correlation:
+
+$a_{i}=\sqrt{}\rho$ 
