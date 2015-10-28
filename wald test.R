@@ -14,7 +14,7 @@ W <- dmean/se
 W
 
 # p-value
-chl.pv <- dnorm(W, 0, 1)
+chl.pv <- 2*pnorm(-abs(W))
 
 # odds ratio
 (pla.p/(1 - pla.p))/(chl.p/(1 - chl.p))
@@ -33,7 +33,7 @@ W <- dmean/se
 W
 
 # p-value
-dim.pv <- dnorm(W, 0, 1)
+dim.pv <- 2*pnorm(-abs(W))
 
 # odds ratio
 (pla.p/(1 - pla.p))/(dim.p/(1 - dim.p))
@@ -52,7 +52,7 @@ W <- dmean/se
 W
 
 # p-value
-p100.pv <- dnorm(W, 0, 1)
+p100.pv <- 2*pnorm(-abs(W))
 
 # odds ratio
 (pla.p/(1 - pla.p))/(p100.p/(1 - p100.p))
@@ -71,7 +71,7 @@ W <- dmean/se
 W
 
 # p-value
-p150.pv <- dnorm(W, 0, 1)
+p150.pv <- 2*pnorm(-abs(W))
 
 # odds ratio
 (pla.p/(1 - pla.p))/(p150.p/(1 - p150.p))
