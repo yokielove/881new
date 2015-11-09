@@ -1,0 +1,16 @@
+---
+title: "CDO Memo"
+output: word_document
+---
+A common structure of CDOs involves slicing the credit risk of the reference pool into a few different risk levels. A "slice" of credit risk, the credit risk between two risk levels, is called a tranche. The tranche that absorbs the first loss (and thus is the most risky tranche) is often called an equity tranche. The remaining tranches are called mezzanine or senior tranches.
+
+The Constructure of CDO can be shown as the following graph:
+![how to refer](E:\R\week8\structure of cdo.png)
+
+CDO tranches, CDSs on tranches and CDO notes
+The risk levels of a synthetic CDO are determined by the total accumulated loss of the reference pool. A tranche is defined as a certain loss range: the lower bound of the range is called an attachment point and the upper bound a detachment point. For example, a 5-10% tranche has an attachment point of 5% and a detachment point of 10%. When the accumulated loss of the reference pool is no more than 5% of the total initial notional of the pool, the tranche will not be affected; however, when the loss has exceeded 5%, any further loss will be deducted from the tranche's notional until the detachment point (10%) is reached. At this point, the tranche is wiped out.
+
+The most common credit derivatives of synthetic CDOs are CDSs and credit-linked notes on CDO tranches. A CDS on a CDO tranche is, to a certain extent, similar to a single-entity CDS. It has a payoff leg and a premium leg. The buyer of a CDS on a tranche will be compensated by the seller for any loss to the tranche and in return the buyer pays a periodic premium to the seller. While the basic structure is similar, there are two fundamental differences between a tranche CDS and single entity CDS:
+
+In a single-entity CDS the seller will take the full loss of the reference credit, whereas in a CDS on a CDO tranche the seller is protected by the tranches with higher credit risk. In more detail, as long as the total loss of the reference pool does not exceed the attachment point of a tranche, the tranche is not affected. Moreover, the loss to a tranche is limited to its notional, not the total loss of any of the credits in the pool.
+In a single-entity CDS the notional is fixed during the life of the CDS. Conversely, a CDS on a CDO tranche has a non-constant premium notional. When a tranche suffers a loss, the buyer will be paid up to the notional of the tranche and at the same time, for most CDOs, the lost amount will be subtracted from the tranche's notional. The premium payment thus decreases until the notional reaches 0, when the CDS ends.
